@@ -29,8 +29,7 @@ from Highschooler
 where ID NOT IN(
   select ID1 as ID
   from Likes)
-  AND
- 	ID NOT IN(
+  AND ID NOT IN(
   select ID2 as ID
   from Likes);
 
