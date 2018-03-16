@@ -41,9 +41,27 @@ where NOT EXISTS (
   where ID = ID1 OR ID = ID2);
 ```
 3.
+```
+SELECT name, grade
+FROM Highschooler h, Likes l
+WHERE h.ID = l.ID2
+GROUP BY name, grade, ID
+HAVING count(*) > 1;
 
+SELECT name, grade
+FROM Highschooler
+WHERE (
+  SElECT count(*)
+  FROM Likes
+  WHERE ID = ID2) > 1;
+```
 4.
-
+```
+SELECT h1.name, h1.grade, h2.name, h2.grade
+FROM Highschooler h1, Likes, Highschooler h2
+WHERE h1.ID = ID1 AND ID2 = h2.ID
+  AND (h1.grade - h2.grade) >= 2;
+```
 5.
 
 6.
